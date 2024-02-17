@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from 'react-router-dom'; 
-import logo from "../assets/logo.png"; // Importing the logo image
+import logo from "../assets/logo.jpeg"; // Importing the logo image
 
 /**
  * NavBar component utilizing react-bootstrap for styling and layout.
