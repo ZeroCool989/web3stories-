@@ -1,97 +1,77 @@
+/* Home.module.css */
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "DM Sans", sans-serif;
-  margin: 0;
-  padding: 0;
+/* Main container for the app, centers content vertically and horizontally */
+.appContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #E0FFFF; /*Light sky blue background */
+  height: 100vh; /* Full viewport height */
+  background-color: #E0FFFF; /* Light sky blue background */
+  padding: 10px; /* Adds padding around the entire container for smaller screens */
 }
 
-
-/* Styles specific to the Home component */
-.home {
-  text-align: center;
-  padding: 20px;
+/* Styles for the main header/title of the page */
+.headerTitle {
+  margin-bottom: 20px; /* Space between the title and content below */
+  text-align: center; /* Centers the title text */
+  font-family: 'Orbitron', sans-serif; /* Sci-fi themed font for aesthetic */
+  font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300))); /* Responsive font size */
 }
 
-.logoContainer {
-  display: flex;
+/* Container for the 3D canvas element */
+.canvasWrapper {
+  margin: 20px; /* Space around the canvas container */
+  width: 60vw; /* Responsive width, 60% of the viewport width */
+  height: 60vw; /* Maintains aspect ratio, making it square */
+  max-width: 400px; /* Limits the maximum size */
+  max-height: 400px;
+  display: flex; /* Centers the canvas element within the wrapper */
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px; /* Space between logos */
+  align-items: center;
 }
 
-.logo {
-  cursor: pointer; /* Indicates clickable items */
-  transition: transform 0.2s; /* Smooth transition for hover effect */
+/* Styles for the subtitle/header beneath the main title */
+.headerSubtitle {
+  margin-top: 20px; /* Space above the subtitle */
+  text-align: center; /* Centers the subtitle text */
+  font-family: 'Orbitron', sans-serif; /* Consistent font with the title */
+  font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300))); /* Responsive font size */
 }
 
-.logo:hover {
-  transform: scale(1.1); /* Slightly enlarge logos on hover */
+/* General padding adjustment for content below the navbar */
+.page-content {
+  padding-top: 56px; /* Compensates for navbar height, ensuring content starts below it */
 }
 
-/* Cube Styles */
-.scene {
-  width: 200px;
-  height: 200px;
-  margin: 2rem auto; /* Centers the cube and adds vertical space */
-  perspective: 400px;
+/* Tablet and below specific adjustments */
+@media (max-width: 768px) {
+  .page-content {
+    padding-top: 75px; /* Increased top padding to accommodate an expanded navbar */
+  }
+
+  .canvasWrapper {
+    width: 80vw;
+    height: 80vw; /* Increases size for better visibility on smaller screens */
+  }
 }
 
-.cube {
-  width: 200px;
-  height: 200px;
-  position: relative;
-  transform-style: preserve-3d;
-  transform: translateZ(-100px);
-  transition: transform 1s;
-}
+/* Mobile and small device specific adjustments */
+@media (max-width: 480px) {
+  .page-content {
+    padding-top: 100px; /* Further increased padding for navbar on very small screens */
+  }
 
-/* Dynamically add 'show-*' classes in  React component based on state or props */
-.cube.show-front { transform: translateZ(-100px) rotateY(0deg); }
-.cube.show-right { transform: translateZ(-100px) rotateY(-90deg); }
-.cube.show-back { transform: translateZ(-100px) rotateY(-180deg); }
-.cube.show-left { transform: translateZ(-100px) rotateY(90deg); }
-.cube.show-top { transform: translateZ(-100px) rotateX(-90deg); }
-.cube.show-bottom { transform: translateZ(-100px) rotateX(90deg); }
+  .headerTitle {
+    font-size: 18px; /* Larger font size for better readability on small screens */
+  }
 
-.cube__face {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 2px solid black;
-  line-height: 200px;
-  font-size: 40px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-}
+  .headerSubtitle {
+    font-size: 14px; /* Adjusted for clarity on small devices */
+  }
 
-/* Color adjustments for cube faces */
-.cube__face--front { background: hsla(0, 100%, 50%, 0.7); }
-.cube__face--right { background: hsla(60, 100%, 50%, 0.7); }
-.cube__face--back { background: hsla(120, 100%, 50%, 0.7); }
-.cube__face--left { background: hsla(180, 100%, 50%, 0.7); }
-.cube__face--top { background: hsla(240, 100%, 50%, 0.7); }
-.cube__face--bottom { background: hsla(300, 100%, 50%, 0.7); }
-
-/* Positioning cube faces */
-.cube__face--front { transform: rotateY(0deg) translateZ(100px); }
-.cube__face--right { transform: rotateY(90deg) translateZ(100px); }
-.cube__face--back { transform: rotateY(180deg) translateZ(100px); }
-.cube__face--left { transform: rotateY(-90deg) translateZ(100px); }
-.cube__face--top { transform: rotateX(90deg) translateZ(100px); }
-.cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
-
-/* Additional styles for instructional text */
-.instruction {
-  margin-top: 20px;
-  font-size: 16px;
+  .canvasWrapper {
+    width: 90vw;
+    height: 90vw; /* Maximizes canvas size for small screen real estate */
+  }
 }

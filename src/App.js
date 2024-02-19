@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
-import Container from "react-bootstrap/Container";
 import { Route, Routes } from "react-router-dom";
 
 // Import the page components
@@ -14,7 +13,7 @@ function App() {
   return (
     <div className={styles.App}>
       <NavBar />
-      <Container className={styles.Main}>
+      <div className={styles.Main}> {/* Changed from Container to div */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />} />
@@ -22,7 +21,7 @@ function App() {
           <Route path="/web3stories" element={<Web3Stories />} />
           <Route path="*" element={<p>Page not found!</p>} />
         </Routes>
-      </Container>
+      </div>
     </div>
   );
 }

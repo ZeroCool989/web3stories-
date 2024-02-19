@@ -1,0 +1,97 @@
+/* Basic Reset and Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+/* Imports the Orbitron font family from Google Fonts for use throughout the navbar. */
+
+.navbar {
+  display: flex; /* Use flexbox for layout, providing responsive alignment and spacing. */
+  justify-content: space-between; /* Space items evenly with the first item at the start and the last at the end. */
+  align-items: center; /* Vertically center items within the navbar. */
+  background-color: #333; /* Sets a dark background color for contrast against light text. */
+  padding: 10px 20px; /* Adds padding inside the navbar for spacing around content. */
+  color: white; /* Sets the text color to white for readability. */
+  font-family: 'Orbitron', sans-serif; /* Applies the Orbitron font for a consistent look. */
+}
+
+.brand {
+  display: flex; /* Uses flexbox to align brand elements, useful if combining text and logos. */
+  align-items: center; /* Ensures the logo and any text are aligned centrally. */
+  color: white; /* Text color for brand/logo to ensure visibility against the dark navbar background. */
+}
+
+.logo {
+  height: 45px; /* Sets the height of the logo. Width is auto-scaled to maintain aspect ratio. */
+}
+
+.toggler {
+  background: none; /* Removes any background styling from the button. */
+  border: none; /* Removes the border from the button for a clean appearance. */
+  color: white; /* Sets the icon/text color to white for visibility. */
+  font-size: 24px; /* Increases the size of the hamburger icon/text for easy interaction. */
+  cursor: pointer; /* Changes the cursor to a pointer to indicate clickable items. */
+  display: inline-block; /* The button uses inline-block to avoid taking up the full width. */
+  margin-right: 10px; /* Add a default right margin for all screen sizes */
+}
+
+/* Class to hide the toggler */
+.hide {
+  visibility: hidden; /* Makes the toggler invisible while maintaining its layout space, unlike display: none. */
+}
+
+.navMenu {
+  display: none; /* Initially hides the navigation menu in its collapsed state. */
+  width: 100%; /* Ensures the menu spans the full width of its container. */
+  flex-direction: column; /* Stacks menu items vertically. */
+  padding-top: 20px; /* Adds space between the toggler and menu items when the menu is expanded. */
+}
+
+.navItem {
+  color: #40E0D0; /* Sets link color to turquoise for a vibrant, noticeable appearance. */
+  padding: 10px 0; /* Adds vertical padding to increase the tap/click area for better usability. */
+  text-align: center; /* Centers the text of each navigation item. */
+  text-decoration: none; /* Removes underlines from links for a cleaner look. */
+  display: block; /* Each item takes up the full width of its container for easier targeting on mobile. */
+  transition: background-color 0.2s ease-in-out; /* Animates background color changes on hover/focus for a smoother visual effect. */
+}
+
+.navItem:hover, .navItem:focus {
+  background-color: #555; /* Changes the background color on hover/focus for visual feedback. */
+}
+
+/* When navMenu is shown */
+.show {
+  display: flex; /* Changes the display to flex to show the menu items. */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .navMenu {
+    display: flex; /* Makes the navigation menu always visible on larger screens. */
+    flex-direction: row; /* Aligns menu items horizontally for a traditional navbar look. */
+    justify-content: flex-end; /* Aligns the menu items to the right of the navbar. */
+    padding-top: 0; /* Resets the padding-top as the toggler space is no longer needed. */
+  }
+
+  .navItem {
+    padding: 0 10px; /* Adjusts horizontal padding for menu items for spacing between links. */
+  }
+
+  .toggler {
+    display: none; /* Hides the toggler button on larger screens as the menu is always visible. */
+  }
+}
+
+/* Adjustments for very small devices */
+@media (max-width: 375px) {
+    .toggler {
+      margin-right: 20px; /* Increase right margin on devices 375px and smaller */
+      font-size: 20px; /* Optionally, adjust the font size to better fit smaller screens */
+    }
+  
+    .navbar {
+      padding: 10px 15px; /* Increase side padding of the navbar for smaller devices */
+    }
+  
+    .navMenu {
+      padding-top: 15px; /* Adjust top padding for the expanded menu if necessary */
+    }
+  }

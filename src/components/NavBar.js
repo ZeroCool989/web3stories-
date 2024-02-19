@@ -1,43 +1,45 @@
-import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from 'react-router-dom'; 
-import logo from "../assets/logo.jpeg"; // Importing the logo image
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.jpeg";
+import styles from "../assets/css/NavBar.module.css"; // Import styles specific to NavBar
 
-/**
- * NavBar component utilizing react-bootstrap for styling and layout.
- * It provides navigation links to different parts of the application.
- */
+// The NavBar component handles the navigation bar of our app
 const NavBar = () => {
+  // State to manage if the navigation menu is expanded or collapsed
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
+
   return (
-    // The Navbar is fixed to the top of the viewport, expanding on medium devices and larger.
-    <Navbar expand="md" fixed="top">
-      <Container>
-        {/* Navbar brand/logo section */}
-        <Navbar.Brand>
-          <img src={logo} alt="logo" height="45" /> {/* Displaying the logo with an alt text for accessibility */}
-        </Navbar.Brand>
+    // The navigation bar container
+    <nav className={styles.navbar}>
+      {/* Link and logo for the brand */}
+      <Link to="/" className={styles.brand}>
+        <img src={logo} alt="logo" className={styles.logo} />
+      </Link>
 
-        {/* Toggle button for collapsed navbar menu on smaller screens */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      {/* Toggle button (hamburger icon) for small screens */}
+      <button
+        className={`${styles.toggler} ${isNavExpanded ? styles.hide : ''}`}
+        onClick={() => setIsNavExpanded(!isNavExpanded)} // Toggles the navigation menu
+        aria-label="Toggle navigation"
+      >
+        ☰ {/* The icon itself */}
+      </button>
 
-        {/* Collapsible navbar menu */}
-        <Navbar.Collapse id="basic-navbar-nav">
-          {/* Navigation links aligned to the right (ml-auto for margin-left: auto) */}
-          <Nav className="ml-auto">
-            {/* Each Nav.Link uses the 'as' prop to render a React Router 'Link', enabling SPA navigation */}
-            <Nav.Link as={Link} to="/">
-              <i className="fas fa-home"></i>Home {/* Home link with an icon */}
-            </Nav.Link>
-            <Nav.Link as={Link} to="/signin">
-              <i className="fas fa-sign-in-alt"></i>Sign in {/* Sign in link with an icon */}
-            </Nav.Link>
-            <Nav.Link as={Link} to="/signup">
-              <i className="fas fa-user-plus"></i>Sign up {/* Sign up link with an icon */}
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+      {/* The navigation menu items, shown or hidden based on isNavExpanded */}
+      <div className={`${styles.navMenu} ${isNavExpanded ? styles.show : ""}`}>
+        {/* Navigation link to the Home page */}
+        <Link to="/" className={styles.navItem} onClick={() => setIsNavExpanded(false)}>
+          Home
+        </Link>
+        {/* More navigation links */}
+        <Link to="/signin" className={styles.navItem} onClick={() => setIsNavExpanded(false)}>
+          Sign in
+        </Link>
+        <Link to="/signup" className={styles.navItem} onClick={() => setIsNavExpanded(false)}>
+          Sign up
+        </Link>
+      </div>
+    </nav>
   );
 };
 

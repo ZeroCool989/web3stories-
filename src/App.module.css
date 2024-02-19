@@ -1,31 +1,38 @@
+/* Import Orbitron font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
 html, body {
   height: 100%;
   margin: 0;
+  font-family: 'Orbitron', sans-serif; /* Apply Orbitron font */
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
   background-color: #E0FFFF; /* Light sky blue background */
 }
 
 .App {
-  min-height: 100vh; 
-  width: 100vw; 
+  min-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+  font-family: 'Orbitron', sans-serif; /* Ensure Orbitron is used */
 }
 
 .page-content {
-  padding-top: 70px; 
+  padding-top: 70px; /* Default padding-top for larger screens */
+  transition: padding-top 0.3s ease-in-out; /* Smooth transition for padding adjustment */
 }
 
 * {
   box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif; /* Apply Orbitron globally */
 }
 
 a {
   color: #40E0D0; /* Turquoise for links */
-  transition: color ease-in-out 0.3s;
+  transition: color 0.3s ease-in-out;
+  font-family: 'Orbitron', sans-serif; /* Ensure Orbitron for links */
 }
 
 a:hover {
@@ -35,7 +42,7 @@ a:hover {
 
 a:hover i {
   color: #FFD700; /* Gold for icons on hover */
-  transition: color ease-in-out 0.3s;
+  transition: color 0.3s ease-in-out;
 }
 
 i {
@@ -43,10 +50,18 @@ i {
   font-size: 1.6rem;
   padding: 7px;
   vertical-align: middle;
+  font-family: 'Orbitron', sans-serif; /* Ensure Orbitron for icons */
 }
 
 i:hover {
   cursor: pointer;
-  transition: color ease-in-out 0.3s;
+  transition: color 0.3s ease-in-out;
   color: #FFD700; /* Gold on hover */
+}
+
+/* Adjustments for smaller devices */
+@media (max-width: 768px) {
+  .page-content {
+    padding-top: 150px; /* Increased padding-top for smaller screens to account for expanded navbar */
+  }
 }
